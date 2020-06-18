@@ -1,6 +1,11 @@
 from rest_framework import authentication
-from checkout.models import Bill, Order, PaymentMethod
-from .serializers import BillSerializer, OrderSerializer, PaymentMethodSerializer
+from checkout.models import Bill, Order, PaymentMethod, SellerOrder
+from .serializers import (
+    BillSerializer,
+    OrderSerializer,
+    PaymentMethodSerializer,
+    SellerOrderSerializer,
+)
 from rest_framework import viewsets
 
 
@@ -29,3 +34,12 @@ class BillViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = Bill.objects.all()
+
+
+class SellerOrderViewSet(viewsets.ModelViewSet):
+    serializer_class = SellerOrderSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = SellerOrder.objects.all()

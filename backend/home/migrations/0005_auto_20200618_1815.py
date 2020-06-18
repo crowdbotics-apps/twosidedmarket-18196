@@ -6,17 +6,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0004_auto_20200618_1746'),
+        ("home", "0004_auto_20200618_1746"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='sellerprofile',
-            name='reviews',
-        ),
+        migrations.RemoveField(model_name="sellerprofile", name="reviews",),
         migrations.AddField(
-            model_name='customerprofile',
-            name='address',
+            model_name="customerprofile",
+            name="address",
             field=models.TextField(blank=True, max_length=256, null=True),
         ),
     ]

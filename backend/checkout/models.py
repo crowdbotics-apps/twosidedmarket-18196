@@ -56,4 +56,19 @@ class Bill(models.Model):
     timestamp_created = models.DateTimeField(null=True, blank=True,)
 
 
+class SellerOrder(models.Model):
+    "Generated Model"
+    order = models.OneToOneField(
+        "checkout.Order", on_delete=models.CASCADE, related_name="sellerorder_order",
+    )
+    timestamp_created = models.DateTimeField(null=True, blank=True,)
+    seller = models.OneToOneField(
+        "home.SellerProfile",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="sellerorder_seller",
+    )
+
+
 # Create your models here.
