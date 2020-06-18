@@ -9,34 +9,70 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('item', '0001_initial'),
-        ('home', '0003_profile'),
+        ("item", "0001_initial"),
+        ("home", "0003_profile"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='profile',
-            name='user',
-        ),
+        migrations.RemoveField(model_name="profile", name="user",),
         migrations.CreateModel(
-            name='SellerProfile',
+            name="SellerProfile",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('photo', models.URLField(blank=True, null=True)),
-                ('timestamp_created', models.DateTimeField(auto_now=True, null=True)),
-                ('last_updated', models.DateTimeField(auto_now=True, null=True)),
-                ('reviews', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sellerprofile_reviews', to='item.Review')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='sellerprofile_user', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("photo", models.URLField(blank=True, null=True)),
+                ("timestamp_created", models.DateTimeField(auto_now=True, null=True)),
+                ("last_updated", models.DateTimeField(auto_now=True, null=True)),
+                (
+                    "reviews",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sellerprofile_reviews",
+                        to="item.Review",
+                    ),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sellerprofile_user",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='CustomerProfile',
+            name="CustomerProfile",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('photo', models.URLField(blank=True, null=True)),
-                ('timestamp_created', models.DateTimeField(auto_now=True, null=True)),
-                ('last_updated', models.DateTimeField(auto_now=True, null=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='customerprofile_user', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("photo", models.URLField(blank=True, null=True)),
+                ("timestamp_created", models.DateTimeField(auto_now=True, null=True)),
+                ("last_updated", models.DateTimeField(auto_now=True, null=True)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="customerprofile_user",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

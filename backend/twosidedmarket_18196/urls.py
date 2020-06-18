@@ -33,6 +33,8 @@ urlpatterns = [
     path("api/v1/", include("checkout.api.v1.urls")),
     path("home/", include("home.urls")),
     path("api/v1/", include("item.api.v1.urls")),
+    path("checkout/", include("checkout.urls")),
+    path("item/", include("item.urls")),
 ]
 
 admin.site.site_header = "twosidedmarket"

@@ -37,7 +37,7 @@ class Profile(models.Model):
     "Generated Model"
     photo = models.URLField(null=True, blank=True,)
     timestamp_created = models.DateTimeField(null=True, blank=True,)
-    last_updated = models.DateTimeField(auto_now=True, null=True, blank=True,)
+    last_updated = models.DateTimeField(null=True, blank=True, auto_now=True,)
 
 
 class SellerProfile(models.Model):
@@ -46,15 +46,8 @@ class SellerProfile(models.Model):
         "users.User", on_delete=models.CASCADE, related_name="sellerprofile_user",
     )
     photo = models.URLField(null=True, blank=True,)
-    timestamp_created = models.DateTimeField(auto_now=True, null=True, blank=True,)
-    last_updated = models.DateTimeField(auto_now=True, null=True, blank=True,)
-    reviews = models.OneToOneField(
-        "item.Review",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        related_name="sellerprofile_reviews",
-    )
+    timestamp_created = models.DateTimeField(null=True, blank=True, auto_now=True,)
+    last_updated = models.DateTimeField(null=True, blank=True, auto_now=True,)
 
 
 class CustomerProfile(models.Model):
@@ -63,5 +56,6 @@ class CustomerProfile(models.Model):
         "users.User", on_delete=models.CASCADE, related_name="customerprofile_user",
     )
     photo = models.URLField(null=True, blank=True,)
-    timestamp_created = models.DateTimeField(auto_now=True, null=True, blank=True,)
-    last_updated = models.DateTimeField(auto_now=True, null=True, blank=True,)
+    timestamp_created = models.DateTimeField(null=True, blank=True, auto_now=True,)
+    last_updated = models.DateTimeField(null=True, blank=True, auto_now=True,)
+    address = models.TextField(max_length=256, null=True, blank=True,)
