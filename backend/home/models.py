@@ -35,9 +35,33 @@ class HomePage(models.Model):
 
 class Profile(models.Model):
     "Generated Model"
-    user = models.OneToOneField(
-        "users.User", on_delete=models.CASCADE, related_name="profile_user",
-    )
     photo = models.URLField(null=True, blank=True,)
     timestamp_created = models.DateTimeField(null=True, blank=True,)
+    last_updated = models.DateTimeField(auto_now=True, null=True, blank=True,)
+
+
+class SellerProfile(models.Model):
+    "Generated Model"
+    user = models.OneToOneField(
+        "users.User", on_delete=models.CASCADE, related_name="sellerprofile_user",
+    )
+    photo = models.URLField(null=True, blank=True,)
+    timestamp_created = models.DateTimeField(auto_now=True, null=True, blank=True,)
+    last_updated = models.DateTimeField(auto_now=True, null=True, blank=True,)
+    reviews = models.OneToOneField(
+        "item.Review",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="sellerprofile_reviews",
+    )
+
+
+class CustomerProfile(models.Model):
+    "Generated Model"
+    user = models.OneToOneField(
+        "users.User", on_delete=models.CASCADE, related_name="customerprofile_user",
+    )
+    photo = models.URLField(null=True, blank=True,)
+    timestamp_created = models.DateTimeField(auto_now=True, null=True, blank=True,)
     last_updated = models.DateTimeField(auto_now=True, null=True, blank=True,)

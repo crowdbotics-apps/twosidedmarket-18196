@@ -14,6 +14,13 @@ class Review(models.Model):
         blank=True,
         related_name="review_category",
     )
+    reviewer = models.OneToOneField(
+        "home.CustomerProfile",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="review_reviewer",
+    )
 
 
 class Category(models.Model):
@@ -42,7 +49,7 @@ class Item(models.Model):
     shipping_time = models.IntegerField(null=True, blank=True,)
     description = models.CharField(max_length=256, null=True, blank=True,)
     seller_profile = models.OneToOneField(
-        "home.Profile",
+        "home.CustomerProfile",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
