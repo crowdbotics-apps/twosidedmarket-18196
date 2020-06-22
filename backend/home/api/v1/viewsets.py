@@ -1,11 +1,14 @@
 from rest_framework import viewsets
 from rest_framework import authentication
 from .serializers import (
+    ChatSerializer,
     CustomerProfileSerializer,
     CustomerPurchasesSerializer,
     CustomTextSerializer,
     FavoritesSerializer,
     HomePageSerializer,
+    InboxSerializer,
+    MessageSerializer,
     ProfileSerializer,
     RecentlyViewedSerializer,
     ReviewsSerializer,
@@ -27,11 +30,14 @@ from home.api.v1.serializers import (
     UserSerializer,
 )
 from home.models import (
+    Chat,
     CustomerProfile,
     CustomerPurchases,
     CustomText,
     Favorites,
     HomePage,
+    Inbox,
+    Message,
     Profile,
     RecentlyViewed,
     Reviews,
@@ -157,3 +163,30 @@ class CustomerPurchasesViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = CustomerPurchases.objects.all()
+
+
+class ChatViewSet(viewsets.ModelViewSet):
+    serializer_class = ChatSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Chat.objects.all()
+
+
+class MessageViewSet(viewsets.ModelViewSet):
+    serializer_class = MessageSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Message.objects.all()
+
+
+class InboxViewSet(viewsets.ModelViewSet):
+    serializer_class = InboxSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Inbox.objects.all()

@@ -7,31 +7,76 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('item', '0007_auto_20200622_1648'),
-        ('checkout', '0007_auto_20200622_1648'),
-        ('home', '0007_auto_20200622_1648'),
+        ("item", "0007_auto_20200622_1648"),
+        ("checkout", "0007_auto_20200622_1648"),
+        ("home", "0007_auto_20200622_1648"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='SellerListings',
+            name="SellerListings",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('listing', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='sellerlistings_listing', to='item.Item')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "listing",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sellerlistings_listing",
+                        to="item.Item",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='RecentlyViewed',
+            name="RecentlyViewed",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('item', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='recentlyviewed_item', to='item.Item')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "item",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="recentlyviewed_item",
+                        to="item.Item",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='CustomerPurchases',
+            name="CustomerPurchases",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('order', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='customerpurchases_order', to='checkout.Order')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "order",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="customerpurchases_order",
+                        to="checkout.Order",
+                    ),
+                ),
             ],
         ),
     ]

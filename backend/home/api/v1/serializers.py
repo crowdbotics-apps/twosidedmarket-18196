@@ -9,11 +9,14 @@ from allauth.account.utils import setup_user_email
 from rest_framework import serializers
 from rest_auth.serializers import PasswordResetSerializer
 from home.models import (
+    Chat,
     CustomerProfile,
     CustomerPurchases,
     CustomText,
     Favorites,
     HomePage,
+    Inbox,
+    Message,
     Profile,
     RecentlyViewed,
     Reviews,
@@ -147,4 +150,22 @@ class SellerListingsSerializer(serializers.ModelSerializer):
 class CustomerPurchasesSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomerPurchases
+        fields = "__all__"
+
+
+class ChatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Chat
+        fields = "__all__"
+
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = "__all__"
+
+
+class InboxSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Inbox
         fields = "__all__"

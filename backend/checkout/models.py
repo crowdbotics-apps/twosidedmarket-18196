@@ -35,6 +35,7 @@ class Order(models.Model):
         blank=True,
         related_name="order_customer",
     )
+    order_confirmation = models.CharField(max_length=256, null=True, blank=True,)
 
 
 class PaymentMethod(models.Model):

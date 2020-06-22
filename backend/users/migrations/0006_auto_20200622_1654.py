@@ -7,24 +7,42 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0008_customerpurchases_recentlyviewed_sellerlistings'),
-        ('users', '0005_auto_20200622_1648'),
+        ("home", "0008_customerpurchases_recentlyviewed_sellerlistings"),
+        ("users", "0005_auto_20200622_1648"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='listings',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='user_listings', to='home.SellerListings'),
+            model_name="user",
+            name="listings",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="user_listings",
+                to="home.SellerListings",
+            ),
         ),
         migrations.AddField(
-            model_name='user',
-            name='purchases',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='user_purchases', to='home.CustomerPurchases'),
+            model_name="user",
+            name="purchases",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="user_purchases",
+                to="home.CustomerPurchases",
+            ),
         ),
         migrations.AddField(
-            model_name='user',
-            name='recently_viewed',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='user_recently_viewed', to='home.RecentlyViewed'),
+            model_name="user",
+            name="recently_viewed",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="user_recently_viewed",
+                to="home.RecentlyViewed",
+            ),
         ),
     ]

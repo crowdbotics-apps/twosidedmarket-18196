@@ -1,11 +1,14 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .viewsets import (
+    ChatViewSet,
     CustomerProfileViewSet,
     CustomerPurchasesViewSet,
     CustomTextViewSet,
     FavoritesViewSet,
     HomePageViewSet,
+    InboxViewSet,
+    MessageViewSet,
     ProfileViewSet,
     RecentlyViewedViewSet,
     ReviewsViewSet,
@@ -35,6 +38,9 @@ router.register("saved", SavedViewSet)
 router.register("recentlyviewed", RecentlyViewedViewSet)
 router.register("sellerlistings", SellerListingsViewSet)
 router.register("customerpurchases", CustomerPurchasesViewSet)
+router.register("chat", ChatViewSet)
+router.register("message", MessageViewSet)
+router.register("inbox", InboxViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),

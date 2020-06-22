@@ -93,3 +93,31 @@ class CustomerPurchases(models.Model):
         on_delete=models.CASCADE,
         related_name="customerpurchases_order",
     )
+
+
+class Chat(models.Model):
+    "Generated Model"
+    messages = models.OneToOneField(
+        "home.Message",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="chat_messages",
+    )
+
+
+class Message(models.Model):
+    "Generated Model"
+    messageID = models.CharField(max_length=256,)
+    text = models.TextField(null=True, blank=True,)
+
+
+class Inbox(models.Model):
+    "Generated Model"
+    chats = models.OneToOneField(
+        "home.Chat",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="inbox_chats",
+    )
