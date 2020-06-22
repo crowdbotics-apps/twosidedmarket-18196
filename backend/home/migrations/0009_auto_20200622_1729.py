@@ -7,34 +7,73 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0008_customerpurchases_recentlyviewed_sellerlistings'),
+        ("home", "0008_customerpurchases_recentlyviewed_sellerlistings"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Chat',
+            name="Chat",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Message',
+            name="Message",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('messageID', models.CharField(max_length=256)),
-                ('text', models.TextField(blank=True, null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("messageID", models.CharField(max_length=256)),
+                ("text", models.TextField(blank=True, null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Inbox',
+            name="Inbox",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('chats', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='inbox_chats', to='home.Chat')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "chats",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="inbox_chats",
+                        to="home.Chat",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='chat',
-            name='messages',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='chat_messages', to='home.Message'),
+            model_name="chat",
+            name="messages",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="chat_messages",
+                to="home.Message",
+            ),
         ),
     ]

@@ -104,6 +104,13 @@ class Chat(models.Model):
         blank=True,
         related_name="chat_messages",
     )
+    recepient = models.OneToOneField(
+        "users.User",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="chat_recepient",
+    )
 
 
 class Message(models.Model):
