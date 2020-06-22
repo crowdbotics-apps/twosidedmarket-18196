@@ -6,35 +6,36 @@ class Order(models.Model):
     "Generated Model"
     item = models.OneToOneField(
         "item.Item",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="order_item",
     )
     bill = models.OneToOneField(
         "checkout.Bill",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="order_bill",
     )
     quantity = models.PositiveIntegerField(null=True, blank=True,)
     payment_method = models.OneToOneField(
         "checkout.PaymentMethod",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="order_payment_method",
     )
+    shipping_status = models.CharField(null=True, blank=True, max_length=256,)
+    timestamp_created = models.DateTimeField(null=True, blank=True,)
+    order_confirmation = models.CharField(max_length=256, null=True, blank=True,)
     customer = models.OneToOneField(
-        "home.CustomerProfile",
+        "users.User",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
         related_name="order_customer",
     )
-    shipping_status = models.CharField(max_length=256, null=True, blank=True,)
-    timestamp_created = models.DateTimeField(null=True, blank=True,)
 
 
 class PaymentMethod(models.Model):
@@ -46,14 +47,14 @@ class PaymentMethod(models.Model):
 class Bill(models.Model):
     "Generated Model"
     total_amount = models.FloatField()
+    timestamp_created = models.DateTimeField(null=True, blank=True,)
     customer = models.OneToOneField(
-        "home.CustomerProfile",
+        "users.User",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
         related_name="bill_customer",
     )
-    timestamp_created = models.DateTimeField(null=True, blank=True,)
 
 
 class SellerOrder(models.Model):
@@ -64,9 +65,9 @@ class SellerOrder(models.Model):
     timestamp_created = models.DateTimeField(null=True, blank=True,)
     seller = models.OneToOneField(
         "home.SellerProfile",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="sellerorder_seller",
     )
 

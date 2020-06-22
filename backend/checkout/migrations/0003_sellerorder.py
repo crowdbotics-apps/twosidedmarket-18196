@@ -7,18 +7,42 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0005_auto_20200618_1815'),
-        ('checkout', '0002_auto_20200618_1815'),
+        ("home", "0005_auto_20200618_1815"),
+        ("checkout", "0002_auto_20200618_1815"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='SellerOrder',
+            name="SellerOrder",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('timestamp_created', models.DateTimeField(blank=True, null=True)),
-                ('order', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='sellerorder_order', to='checkout.Order')),
-                ('seller', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sellerorder_seller', to='home.SellerProfile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("timestamp_created", models.DateTimeField(blank=True, null=True)),
+                (
+                    "order",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sellerorder_order",
+                        to="checkout.Order",
+                    ),
+                ),
+                (
+                    "seller",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sellerorder_seller",
+                        to="home.SellerProfile",
+                    ),
+                ),
             ],
         ),
     ]

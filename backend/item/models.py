@@ -14,19 +14,19 @@ class Review(models.Model):
         on_delete=models.CASCADE,
         related_name="review_category",
     )
-    reviewer = models.OneToOneField(
-        "home.CustomerProfile",
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE,
-        related_name="review_reviewer",
-    )
     seller = models.OneToOneField(
         "home.SellerProfile",
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="review_seller",
+    )
+    reviewer = models.OneToOneField(
+        "users.User",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="review_seller",
+        related_name="review_reviewer",
     )
 
 
@@ -57,9 +57,9 @@ class Item(models.Model):
     description = models.CharField(null=True, blank=True, max_length=256,)
     seller_profile = models.OneToOneField(
         "home.SellerProfile",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="item_seller_profile",
     )
     active = models.BooleanField(null=True, blank=True,)

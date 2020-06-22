@@ -58,4 +58,4 @@ class CustomerProfile(models.Model):
     photo = models.URLField(null=True, blank=True,)
     timestamp_created = models.DateTimeField(null=True, blank=True, auto_now=True,)
     last_updated = models.DateTimeField(null=True, blank=True, auto_now=True,)
-    address = models.TextField(max_length=256, null=True, blank=True,)
+    address = models.TextField(null=True, blank=True, max_length=256,)
