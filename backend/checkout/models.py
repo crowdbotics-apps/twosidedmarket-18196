@@ -26,15 +26,15 @@ class Order(models.Model):
         on_delete=models.CASCADE,
         related_name="order_payment_method",
     )
-    customer = models.OneToOneField(
-        "home.CustomerProfile",
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE,
-        related_name="order_customer",
-    )
     shipping_status = models.CharField(null=True, blank=True, max_length=256,)
     timestamp_created = models.DateTimeField(null=True, blank=True,)
+    customer = models.OneToOneField(
+        "users.User",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="order_customer",
+    )
 
 
 class PaymentMethod(models.Model):

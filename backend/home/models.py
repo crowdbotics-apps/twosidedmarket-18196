@@ -52,9 +52,6 @@ class SellerProfile(models.Model):
 
 class CustomerProfile(models.Model):
     "Generated Model"
-    user = models.OneToOneField(
-        "users.User", on_delete=models.CASCADE, related_name="customerprofile_user",
-    )
     photo = models.URLField(null=True, blank=True,)
     timestamp_created = models.DateTimeField(null=True, blank=True, auto_now=True,)
     last_updated = models.DateTimeField(null=True, blank=True, auto_now=True,)
