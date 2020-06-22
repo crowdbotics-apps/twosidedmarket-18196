@@ -13,8 +13,6 @@ class User(AbstractUser):
     timestamp_created = models.DateTimeField(null=True, blank=True, auto_now_add=True,)
     last_updated = models.DateTimeField(null=True, blank=True, auto_now=True,)
     phone_number = models.CharField(null=True, blank=True, max_length=256,)
-    photo = models.URLField(null=True, blank=True,)
-    address = models.TextField(null=True, blank=True,)
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})

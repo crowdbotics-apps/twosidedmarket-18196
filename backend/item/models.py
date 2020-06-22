@@ -14,19 +14,19 @@ class Review(models.Model):
         on_delete=models.CASCADE,
         related_name="review_category",
     )
+    reviewer = models.OneToOneField(
+        "home.CustomerProfile",
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="review_reviewer",
+    )
     seller = models.OneToOneField(
         "home.SellerProfile",
         null=True,
         blank=True,
         on_delete=models.CASCADE,
         related_name="review_seller",
-    )
-    reviewer = models.OneToOneField(
-        "users.User",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        related_name="review_reviewer",
     )
 
 

@@ -8,13 +8,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('item', '0003_auto_20200618_1815'),
+        ("item", "0003_auto_20200618_1815"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='review',
-            name='reviewer',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='review_reviewer', to=settings.AUTH_USER_MODEL),
+            model_name="review",
+            name="reviewer",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="review_reviewer",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]
