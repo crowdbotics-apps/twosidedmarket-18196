@@ -3,8 +3,11 @@ from rest_framework.routers import DefaultRouter
 from .viewsets import (
     CustomerProfileViewSet,
     CustomTextViewSet,
+    FavoritesViewSet,
     HomePageViewSet,
     ProfileViewSet,
+    ReviewsViewSet,
+    SavedViewSet,
     SellerProfileViewSet,
 )
 
@@ -23,6 +26,9 @@ router.register("homepage", HomePageViewSet)
 router.register("profile", ProfileViewSet)
 router.register("sellerprofile", SellerProfileViewSet)
 router.register("customerprofile", CustomerProfileViewSet)
+router.register("favorites", FavoritesViewSet)
+router.register("reviews", ReviewsViewSet)
+router.register("saved", SavedViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),

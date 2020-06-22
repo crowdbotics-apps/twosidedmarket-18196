@@ -14,19 +14,19 @@ class Review(models.Model):
         on_delete=models.CASCADE,
         related_name="review_category",
     )
-    seller = models.OneToOneField(
-        "home.SellerProfile",
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE,
-        related_name="review_seller",
-    )
     reviewer = models.OneToOneField(
         "users.User",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
         related_name="review_reviewer",
+    )
+    seller = models.OneToOneField(
+        "users.User",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="review_seller",
     )
 
 
@@ -55,14 +55,14 @@ class Item(models.Model):
     shipping_price = models.FloatField(null=True, blank=True,)
     shipping_time = models.IntegerField(null=True, blank=True,)
     description = models.CharField(null=True, blank=True, max_length=256,)
-    seller_profile = models.OneToOneField(
-        "home.SellerProfile",
+    active = models.BooleanField(null=True, blank=True,)
+    seller = models.OneToOneField(
+        "users.User",
+        on_delete=models.CASCADE,
         null=True,
         blank=True,
-        on_delete=models.CASCADE,
-        related_name="item_seller_profile",
+        related_name="item_seller",
     )
-    active = models.BooleanField(null=True, blank=True,)
 
 
 # Create your models here.

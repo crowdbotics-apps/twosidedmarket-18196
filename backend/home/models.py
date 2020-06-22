@@ -42,11 +42,6 @@ class Profile(models.Model):
 
 class SellerProfile(models.Model):
     "Generated Model"
-    user = models.OneToOneField(
-        "users.User", on_delete=models.CASCADE, related_name="sellerprofile_user",
-    )
-    photo = models.URLField(null=True, blank=True,)
-    timestamp_created = models.DateTimeField(null=True, blank=True, auto_now=True,)
     last_updated = models.DateTimeField(null=True, blank=True, auto_now=True,)
 
 
@@ -56,3 +51,22 @@ class CustomerProfile(models.Model):
     timestamp_created = models.DateTimeField(null=True, blank=True, auto_now=True,)
     last_updated = models.DateTimeField(null=True, blank=True, auto_now=True,)
     address = models.TextField(null=True, blank=True, max_length=256,)
+
+
+class Favorites(models.Model):
+    "Generated Model"
+    test = models.BigIntegerField(null=True, blank=True,)
+
+
+class Reviews(models.Model):
+    "Generated Model"
+    review = models.OneToOneField(
+        "item.Review", on_delete=models.CASCADE, related_name="reviews_review",
+    )
+
+
+class Saved(models.Model):
+    "Generated Model"
+    item = models.OneToOneField(
+        "item.Item", on_delete=models.CASCADE, related_name="saved_item",
+    )

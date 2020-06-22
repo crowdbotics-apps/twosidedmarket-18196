@@ -3,8 +3,11 @@ from rest_framework import authentication
 from .serializers import (
     CustomerProfileSerializer,
     CustomTextSerializer,
+    FavoritesSerializer,
     HomePageSerializer,
     ProfileSerializer,
+    ReviewsSerializer,
+    SavedSerializer,
     SellerProfileSerializer,
 )
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
@@ -20,7 +23,16 @@ from home.api.v1.serializers import (
     HomePageSerializer,
     UserSerializer,
 )
-from home.models import CustomerProfile, CustomText, HomePage, Profile, SellerProfile
+from home.models import (
+    CustomerProfile,
+    CustomText,
+    Favorites,
+    HomePage,
+    Profile,
+    Reviews,
+    Saved,
+    SellerProfile,
+)
 
 
 class SignupViewSet(ModelViewSet):
@@ -85,3 +97,30 @@ class CustomerProfileViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = CustomerProfile.objects.all()
+
+
+class FavoritesViewSet(viewsets.ModelViewSet):
+    serializer_class = FavoritesSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Favorites.objects.all()
+
+
+class ReviewsViewSet(viewsets.ModelViewSet):
+    serializer_class = ReviewsSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Reviews.objects.all()
+
+
+class SavedViewSet(viewsets.ModelViewSet):
+    serializer_class = SavedSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Saved.objects.all()

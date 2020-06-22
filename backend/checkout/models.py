@@ -63,10 +63,10 @@ class SellerOrder(models.Model):
     )
     timestamp_created = models.DateTimeField(null=True, blank=True,)
     seller = models.OneToOneField(
-        "home.SellerProfile",
+        "users.User",
+        on_delete=models.CASCADE,
         null=True,
         blank=True,
-        on_delete=models.CASCADE,
         related_name="sellerorder_seller",
     )
 
