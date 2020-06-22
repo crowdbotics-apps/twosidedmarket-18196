@@ -8,13 +8,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('checkout', '0006_auto_20200622_1624'),
+        ("checkout", "0006_auto_20200622_1624"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='sellerorder',
-            name='seller',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sellerorder_seller', to=settings.AUTH_USER_MODEL),
+            model_name="sellerorder",
+            name="seller",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="sellerorder_seller",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

@@ -10,12 +10,15 @@ from rest_framework import serializers
 from rest_auth.serializers import PasswordResetSerializer
 from home.models import (
     CustomerProfile,
+    CustomerPurchases,
     CustomText,
     Favorites,
     HomePage,
     Profile,
+    RecentlyViewed,
     Reviews,
     Saved,
+    SellerListings,
     SellerProfile,
 )
 
@@ -126,4 +129,22 @@ class ReviewsSerializer(serializers.ModelSerializer):
 class SavedSerializer(serializers.ModelSerializer):
     class Meta:
         model = Saved
+        fields = "__all__"
+
+
+class RecentlyViewedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecentlyViewed
+        fields = "__all__"
+
+
+class SellerListingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SellerListings
+        fields = "__all__"
+
+
+class CustomerPurchasesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomerPurchases
         fields = "__all__"

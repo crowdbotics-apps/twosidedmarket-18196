@@ -70,3 +70,26 @@ class Saved(models.Model):
     item = models.OneToOneField(
         "item.Item", on_delete=models.CASCADE, related_name="saved_item",
     )
+
+
+class RecentlyViewed(models.Model):
+    "Generated Model"
+    item = models.OneToOneField(
+        "item.Item", on_delete=models.CASCADE, related_name="recentlyviewed_item",
+    )
+
+
+class SellerListings(models.Model):
+    "Generated Model"
+    listing = models.OneToOneField(
+        "item.Item", on_delete=models.CASCADE, related_name="sellerlistings_listing",
+    )
+
+
+class CustomerPurchases(models.Model):
+    "Generated Model"
+    order = models.OneToOneField(
+        "checkout.Order",
+        on_delete=models.CASCADE,
+        related_name="customerpurchases_order",
+    )

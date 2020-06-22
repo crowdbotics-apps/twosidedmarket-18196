@@ -7,42 +7,71 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('item', '0007_auto_20200622_1648'),
-        ('home', '0006_remove_customerprofile_user'),
+        ("item", "0007_auto_20200622_1648"),
+        ("home", "0006_remove_customerprofile_user"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Favorites',
+            name="Favorites",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('test', models.BigIntegerField(blank=True, null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("test", models.BigIntegerField(blank=True, null=True)),
             ],
         ),
-        migrations.RemoveField(
-            model_name='sellerprofile',
-            name='photo',
-        ),
-        migrations.RemoveField(
-            model_name='sellerprofile',
-            name='timestamp_created',
-        ),
-        migrations.RemoveField(
-            model_name='sellerprofile',
-            name='user',
-        ),
+        migrations.RemoveField(model_name="sellerprofile", name="photo",),
+        migrations.RemoveField(model_name="sellerprofile", name="timestamp_created",),
+        migrations.RemoveField(model_name="sellerprofile", name="user",),
         migrations.CreateModel(
-            name='Saved',
+            name="Saved",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('item', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='saved_item', to='item.Item')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "item",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="saved_item",
+                        to="item.Item",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Reviews',
+            name="Reviews",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('review', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='reviews_review', to='item.Review')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "review",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="reviews_review",
+                        to="item.Review",
+                    ),
+                ),
             ],
         ),
     ]

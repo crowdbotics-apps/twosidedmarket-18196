@@ -2,12 +2,15 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .viewsets import (
     CustomerProfileViewSet,
+    CustomerPurchasesViewSet,
     CustomTextViewSet,
     FavoritesViewSet,
     HomePageViewSet,
     ProfileViewSet,
+    RecentlyViewedViewSet,
     ReviewsViewSet,
     SavedViewSet,
+    SellerListingsViewSet,
     SellerProfileViewSet,
 )
 
@@ -29,6 +32,9 @@ router.register("customerprofile", CustomerProfileViewSet)
 router.register("favorites", FavoritesViewSet)
 router.register("reviews", ReviewsViewSet)
 router.register("saved", SavedViewSet)
+router.register("recentlyviewed", RecentlyViewedViewSet)
+router.register("sellerlistings", SellerListingsViewSet)
+router.register("customerpurchases", CustomerPurchasesViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),

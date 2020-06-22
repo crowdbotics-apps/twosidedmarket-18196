@@ -7,29 +7,41 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0007_auto_20200622_1648'),
-        ('users', '0004_auto_20200622_1622'),
+        ("home", "0007_auto_20200622_1648"),
+        ("users", "0004_auto_20200622_1622"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='address',
+            model_name="user",
+            name="address",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='user',
-            name='photo',
+            model_name="user",
+            name="photo",
             field=models.URLField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='user',
-            name='reviews',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='user_reviews', to='home.Reviews'),
+            model_name="user",
+            name="reviews",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="user_reviews",
+                to="home.Reviews",
+            ),
         ),
         migrations.AddField(
-            model_name='user',
-            name='saved_items',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='user_saved_items', to='home.Saved'),
+            model_name="user",
+            name="saved_items",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="user_saved_items",
+                to="home.Saved",
+            ),
         ),
     ]

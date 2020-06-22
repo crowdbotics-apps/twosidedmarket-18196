@@ -29,6 +29,27 @@ class User(AbstractUser):
         blank=True,
         related_name="user_saved_items",
     )
+    recently_viewed = models.OneToOneField(
+        "home.RecentlyViewed",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="user_recently_viewed",
+    )
+    listings = models.OneToOneField(
+        "home.SellerListings",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="user_listings",
+    )
+    purchases = models.OneToOneField(
+        "home.CustomerPurchases",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="user_purchases",
+    )
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})

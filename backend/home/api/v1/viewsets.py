@@ -2,12 +2,15 @@ from rest_framework import viewsets
 from rest_framework import authentication
 from .serializers import (
     CustomerProfileSerializer,
+    CustomerPurchasesSerializer,
     CustomTextSerializer,
     FavoritesSerializer,
     HomePageSerializer,
     ProfileSerializer,
+    RecentlyViewedSerializer,
     ReviewsSerializer,
     SavedSerializer,
+    SellerListingsSerializer,
     SellerProfileSerializer,
 )
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
@@ -25,12 +28,15 @@ from home.api.v1.serializers import (
 )
 from home.models import (
     CustomerProfile,
+    CustomerPurchases,
     CustomText,
     Favorites,
     HomePage,
     Profile,
+    RecentlyViewed,
     Reviews,
     Saved,
+    SellerListings,
     SellerProfile,
 )
 
@@ -124,3 +130,30 @@ class SavedViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = Saved.objects.all()
+
+
+class RecentlyViewedViewSet(viewsets.ModelViewSet):
+    serializer_class = RecentlyViewedSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = RecentlyViewed.objects.all()
+
+
+class SellerListingsViewSet(viewsets.ModelViewSet):
+    serializer_class = SellerListingsSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = SellerListings.objects.all()
+
+
+class CustomerPurchasesViewSet(viewsets.ModelViewSet):
+    serializer_class = CustomerPurchasesSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = CustomerPurchases.objects.all()
